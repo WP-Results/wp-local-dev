@@ -9,10 +9,9 @@ define('SCRIPT_DEBUG', true);
 
 error_reporting(E_ALL);
 ini_set('display_errors','Off');
-ini_set('error_log',dirname(__FILE__).'/error.log');
+ini_set('error_log',dirname(__FILE__).'/../error.log');
 
-require('wpr/debug.php');
-
+@require(dirname(__FILE__).'/wpr-dev/debug.php');
 
 define('DB_NAME', 'wordpress');
 define('DB_USER', 'dev');
