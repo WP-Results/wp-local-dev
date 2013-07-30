@@ -14,7 +14,14 @@ error_reporting(E_ALL);
 ini_set('display_errors','Off');
 ini_set('error_log',dirname(__FILE__).'/error.log');
 
-@require(dirname(__FILE__).'/wpr-dev/debug.php');
+@require(dirname(__FILE__).'/wp-local-dev/debug.php');
+if(!function_exists('dprint'))
+{
+  function dprint($s,$should_exit=false)
+  {
+    error_log("Debugging not available. Install git@github.com:/WP-Results/wp-local-dev.git");
+  }
+}
 
 define('DB_NAME', 'wordpress');
 define('DB_USER', 'dev');
