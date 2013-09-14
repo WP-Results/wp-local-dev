@@ -33,6 +33,13 @@ suppress it.
 */
 $WPR_DEBUG_SKIP = array(
   '2dd2d83fd686c65a725f278a757512fa', // SimplePie
+  'wp-types',
+  'wp-views',
+  'wp-includes',
+  'toolset-module-manager',
+  'category-checklist-tree',
+  'theme-my-login',
+  'members',
 );
 
 /*
@@ -122,3 +129,5 @@ if(isset($_SERVER['REMOTE_ADDR']))
   
   $_SERVER["REMOTE_ADDR"] = getRemoteAddress();
 }
+
+dprint("\n\n\n\n\n\n\n\n\n\n");
