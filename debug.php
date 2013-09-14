@@ -51,4 +51,3 @@ function handle_error($errno, $errstr, $errfile, $errline) {
   dprint($s, $should_exit);
 }
 
-dprint("\n\n\n\n\n\n\n\n\n\n");

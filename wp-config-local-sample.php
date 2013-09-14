@@ -76,9 +76,11 @@ END CONFIG
 */
 
 // Include dprint() if available, otherwise define it.
-@require(dirname(__FILE__).'/wp-local-dev/debug.php');
-if(!function_exists('dprint'))
+$debug_fname = dirname(__FILE__).'/wp-local-dev/debug.php';
+if(file_exists($debug_fname))
 {
+  require($debug_fname);
+} else {
   function dprint($s,$should_exit=false)
   {
     error_log("Debugging not available. Install git@github.com:/WP-Results/wp-local-dev.git");
@@ -99,3 +101,24 @@ $mysqli->query(sprintf("update wp_users set user_email = '%s', user_pass='%s' wh
   '$P$BeTcuDVW8ptcglqKUAVb1yV4jZhjl..'
 ));
 
+
+if(isset($_SERVER['REMOTE_ADDR']))
+{
+  function getRemoteAddress() {
+          $hostname = $_SERVER['REMOTE_ADDR'];
+  
+          $headers = apache_request_headers();
+          foreach($headers as $k => $v) {
+                  if(strcasecmp($k, "x-forwarded-for"))
+                          continue;
+  
+                  $hostname = explode(",", $v);
+                  $hostname = trim($hostname[0]);
+                  break;
+          }
+  
+          return $hostname;
+  }
+  
+  $_SERVER["REMOTE_ADDR"] = getRemoteAddress();
+}
